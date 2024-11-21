@@ -1,0 +1,222 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 268435456 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3532), pid=23208, tid=23588
+#
+# JRE version:  (17.0.2+8) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (17.0.2+8-LTS-86, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Xmx512M -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dkafka.logs.dir=C:\kafka/logs -Dlog4j.configuration=file:C:\kafka/config/tools-log4j.properties org.apache.kafka.tools.consumer.ConsoleConsumer --bootstrap-server localhost:9092 --topic powerconsumption --from-beginning
+
+Host: AMD Ryzen 5 3600 6-Core Processor              , 12 cores, 15G,  Windows 10 , 64 bit Build 19041 (10.0.19041.5072)
+Time: Mon Nov 18 22:48:33 2024 China Standard Time elapsed time: 0.009417 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000028e36f79b20):  JavaThread "Unknown thread" [_thread_in_vm, id=23588, stack(0x000000d3c8a00000,0x000000d3c8b00000)]
+
+Stack: [0x000000d3c8a00000,0x000000d3c8b00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x670baa]
+V  [jvm.dll+0x7cfcb4]
+V  [jvm.dll+0x7d145e]
+V  [jvm.dll+0x7d1ac3]
+V  [jvm.dll+0x242bc5]
+V  [jvm.dll+0x66dac9]
+V  [jvm.dll+0x662412]
+V  [jvm.dll+0x300c0b]
+V  [jvm.dll+0x3081a6]
+V  [jvm.dll+0x357d0e]
+V  [jvm.dll+0x357f3f]
+V  [jvm.dll+0x2d7ec8]
+V  [jvm.dll+0x2d8e34]
+V  [jvm.dll+0x7a18c1]
+V  [jvm.dll+0x365a91]
+V  [jvm.dll+0x780d2c]
+V  [jvm.dll+0x3e845f]
+V  [jvm.dll+0x3e9f01]
+C  [jli.dll+0x527b]
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17374]
+C  [ntdll.dll+0x4cc91]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffed5599858, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000028e36f9f990 GCTaskThread "GC Thread#0" [stack: 0x000000d3c8b00000,0x000000d3c8c00000] [id=11232]
+  0x0000028e36fa57f0 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000d3c8c00000,0x000000d3c8d00000] [id=13188]
+  0x0000028e36fa68b0 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000d3c8d00000,0x000000d3c8e00000] [id=13820]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffed4de88a7]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000028e36f761c0] Heap_lock - owner thread: 0x0000028e36f79b20
+
+Heap address: 0x00000000e0000000, size: 512 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x00000000e0000000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffed51c9f19]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (1 events):
+Event: 0.006 Loaded shared library C:\Program Files\Java\jdk-17.0.2\bin\java.dll
+
+
+Dynamic libraries:
+0x00007ff642f60000 - 0x00007ff642f70000 	C:\Program Files\Java\jdk-17.0.2\bin\java.exe
+0x00007fff5b750000 - 0x00007fff5b948000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007fff5b4d0000 - 0x00007fff5b592000 	C:\Windows\System32\KERNEL32.DLL
+0x00007fff58df0000 - 0x00007fff590ee000 	C:\Windows\System32\KERNELBASE.dll
+0x00007fff59400000 - 0x00007fff59500000 	C:\Windows\System32\ucrtbase.dll
+0x00007fff429b0000 - 0x00007fff429ca000 	C:\Program Files\Java\jdk-17.0.2\bin\VCRUNTIME140.dll
+0x00007fff45060000 - 0x00007fff45078000 	C:\Program Files\Java\jdk-17.0.2\bin\jli.dll
+0x00007fff5a0f0000 - 0x00007fff5a1a1000 	C:\Windows\System32\ADVAPI32.dll
+0x00007fff5a470000 - 0x00007fff5a50e000 	C:\Windows\System32\msvcrt.dll
+0x00007fff5b670000 - 0x00007fff5b70f000 	C:\Windows\System32\sechost.dll
+0x00007fff5a690000 - 0x00007fff5a7b3000 	C:\Windows\System32\RPCRT4.dll
+0x00007fff59310000 - 0x00007fff59337000 	C:\Windows\System32\bcrypt.dll
+0x00007fff5a2d0000 - 0x00007fff5a46d000 	C:\Windows\System32\USER32.dll
+0x00007fff593d0000 - 0x00007fff593f2000 	C:\Windows\System32\win32u.dll
+0x00007fff426c0000 - 0x00007fff4295a000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16\COMCTL32.dll
+0x00007fff5a580000 - 0x00007fff5a5ab000 	C:\Windows\System32\GDI32.dll
+0x00007fff590f0000 - 0x00007fff59207000 	C:\Windows\System32\gdi32full.dll
+0x00007fff596d0000 - 0x00007fff5976d000 	C:\Windows\System32\msvcp_win.dll
+0x00007fff525c0000 - 0x00007fff525ca000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007fff5a660000 - 0x00007fff5a68f000 	C:\Windows\System32\IMM32.DLL
+0x00007fff506a0000 - 0x00007fff506ac000 	C:\Program Files\Java\jdk-17.0.2\bin\vcruntime140_1.dll
+0x00007fff277a0000 - 0x00007fff2782d000 	C:\Program Files\Java\jdk-17.0.2\bin\msvcp140.dll
+0x00007ffed4b00000 - 0x00007ffed56c1000 	C:\Program Files\Java\jdk-17.0.2\bin\server\jvm.dll
+0x00007fff5a7c0000 - 0x00007fff5a7c8000 	C:\Windows\System32\PSAPI.DLL
+0x00007fff55d50000 - 0x00007fff55d59000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007fff522f0000 - 0x00007fff52317000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007fff5a7d0000 - 0x00007fff5a83b000 	C:\Windows\System32\WS2_32.dll
+0x00007fff56bb0000 - 0x00007fff56bc2000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007fff4ca10000 - 0x00007fff4ca1a000 	C:\Program Files\Java\jdk-17.0.2\bin\jimage.dll
+0x00007fff49dc0000 - 0x00007fff49fa4000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007fff3c880000 - 0x00007fff3c8b4000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007fff59340000 - 0x00007fff593c2000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007fff425e0000 - 0x00007fff42605000 	C:\Program Files\Java\jdk-17.0.2\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-17.0.2\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16;C:\Program Files\Java\jdk-17.0.2\bin\server
+
+VM Arguments:
+jvm_args: -Xmx512M -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dkafka.logs.dir=C:\kafka/logs -Dlog4j.configuration=file:C:\kafka/config/tools-log4j.properties 
+java_command: org.apache.kafka.tools.consumer.ConsoleConsumer --bootstrap-server localhost:9092 --topic powerconsumption --from-beginning
+java_class_path (initial): C:\kafka\libs\activation-1.1.1.jar;C:\kafka\libs\aopalliance-repackaged-2.6.1.jar;C:\kafka\libs\argparse4j-0.7.0.jar;C:\kafka\libs\audience-annotations-0.12.0.jar;C:\kafka\libs\caffeine-2.9.3.jar;C:\kafka\libs\commons-beanutils-1.9.4.jar;C:\kafka\libs\commons-cli-1.4.jar;C:\kafka\libs\commons-collections-3.2.2.jar;C:\kafka\libs\commons-digester-2.1.jar;C:\kafka\libs\commons-io-2.14.0.jar;C:\kafka\libs\commons-lang3-3.12.0.jar;C:\kafka\libs\commons-logging-1.2.jar;C:\kafka\libs\commons-validator-1.7.jar;C:\kafka\libs\connect-api-3.9.0.jar;C:\kafka\libs\connect-basic-auth-extension-3.9.0.jar;C:\kafka\libs\connect-file-3.9.0.jar;C:\kafka\libs\connect-json-3.9.0.jar;C:\kafka\libs\connect-mirror-3.9.0.jar;C:\kafka\libs\connect-mirror-client-3.9.0.jar;C:\kafka\libs\connect-runtime-3.9.0.jar;C:\kafka\libs\connect-transforms-3.9.0.jar;C:\kafka\libs\error_prone_annotations-2.10.0.jar;C:\kafka\libs\hk2-api-2.6.1.jar;C:\kafka\libs\hk2-locator-2.6.1.jar;C:\kafka\libs\hk2-utils-2.6.1.jar;C:\kafka\libs\jackson-annotations-2.16.2.jar;C:\kafka\libs\jackson-core-2.16.2.jar;C:\kafka\libs\jackson-databind-2.16.2.jar;C:\kafka\libs\jackson-dataformat-csv-2.16.2.jar;C:\kafka\libs\jackson-datatype-jdk8-2.16.2.jar;C:\kafka\libs\jackson-jaxrs-base-2.16.2.jar;C:\kafka\libs\jackson-jaxrs-json-provider-2.16.2.jar;C:\kafka\libs\jackson-module-afterburner-2.16.2.jar;C:\kafka\libs\jackson-module-jaxb-annotations-2.16.2.jar;C:\kafka\libs\jackson-module-scala_2.13-2.16.2.jar;C:\kafka\libs\jakarta.activation-api-1.2.2.jar;C:\kafka\libs\jakarta.annotation-api-1.3.5.jar;C:\kafka\libs\jakarta.inject-2.6.1.jar;C:\kafka\libs\jakarta.validation-api-2.0.2.jar;C:\kafka\libs\jakarta.ws.rs-api-2.1.6.jar;C:\kafka\libs\jakarta.xml.bind-api-2.3.3.jar;C:\kafka\libs\javassist-3.29.2-GA.jar;C:\kafka\libs\javax.activation-api-1.2.0.jar;C:\kafka\libs\javax.annotation-api-1.3.2.jar;C:\kafka\libs\javax.servlet-api-3.1.0.jar;C:\kafka\libs\javax.ws.rs-api-2.1.1.jar;C:\kafka\libs\jaxb-api-2.3.
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     bool ExplicitGCInvokesConcurrent              = true                                      {product} {command line}
+     uint G1ConcRefinementThreads                  = 10                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 268435456                                 {product} {ergonomic}
+    uintx InitiatingHeapOccupancyPercent           = 35                                        {product} {command line}
+     bool ManagementServer                         = true                                      {product} {command line}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+    uintx MaxGCPauseMillis                         = 20                                        {product} {command line}
+   size_t MaxHeapSize                              = 536870912                                 {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 536870912                              {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {command line}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-17.0.2
+CLASSPATH="C:\kafka\libs\activation-1.1.1.jar";"C:\kafka\libs\aopalliance-repackaged-2.6.1.jar";"C:\kafka\libs\argparse4j-0.7.0.jar";"C:\kafka\libs\audience-annotations-0.12.0.jar";"C:\kafka\libs\caffeine-2.9.3.jar";"C:\kafka\libs\commons-beanutils-1.9.4.jar";"C:\kafka\libs\commons-cli-1.4.jar";"C:\kafka\libs\commons-collections-3.2.2.jar";"C:\kafka\libs\commons-digester-2.1.jar";"C:\kafka\libs\commons-io-2.14.0.jar";"C:\kafka\libs\commons-lang3-3.12.0.jar";"C:\kafka\libs\commons-logging-1.2.jar";"C:\kafka\libs\commons-validator-1.7.jar";"C:\kafka\libs\connect-api-3.9.0.jar";"C:\kafka\libs\connect-basic-auth-extension-3.9.0.jar";"C:\kafka\libs\connect-file-3.9.0.jar";"C:\kafka\libs\connect-json-3.9.0.jar";"C:\kafka\libs\connect-mirror-3.9.0.jar";"C:\kafka\libs\connect-mirror-client-3.9.0.jar";"C:\kafka\libs\connect-runtime-3.9.0.jar";"C:\kafka\libs\connect-transforms-3.9.0.jar";"C:\kafka\libs\error_prone_annotations-2.10.0.jar";"C:\kafka\libs\hk2-api-2.6.1.jar";"C:\kafka\libs\hk2-locator-2.6.1.jar";"C:\kafka\libs\hk2-utils-2.6.1.jar";"C:\kafka\libs\jackson-annotations-2.16.2.jar";"C:\kafka\libs\jackson-core-2.16.2.jar";"C:\kafka\libs\jackson-databind-2.16.2.jar";"C:\kafka\libs\jackson-dataformat-csv-2.16.2.jar";"C:\kafka\libs\jackson-datatype-jdk8-2.16.2.jar";"C:\kafka\libs\jackson-jaxrs-base-2.16.2.jar";"C:\kafka\libs\jackson-jaxrs-json-provider-2.16.2.jar";"C:\kafka\libs\jackson-module-afterburner-2.16.2.jar";"C:\kafka\libs\jackson-module-jaxb-annotations-2.16.2.jar";"C:\kafka\libs\jackson-module-scala_2.13-2.16.2.jar";"C:\kafka\libs\jakarta.activation-api-1.2.2.jar";"C:\kafka\libs\jakarta.annotation-api-1.3.5.jar";"C:\kafka\libs\jakarta.inject-2.6.1.jar";"C:\kafka\libs\jakarta.validation-api-2.0.2.jar";"C:\kafka\libs\jakarta.ws.rs-api-2.1.6.jar";"C:\kafka\libs\jakarta.xml.bind-api-2.3.3.jar";"C:\kafka\libs\javassist-3.29.2-GA.jar";"C:\kafka\libs\javax.activation-api-1.2.0.jar";"C:\kafka\libs\javax.annotation-api-1.3.2.jar";"C:\kafka\libs\javax.servlet-api-3.1.0.jar";"C:\
+PATH=C:\Users\Admin\Desktop\dashboard_finals\venv\Scripts;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk-17.0.2\bin;Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Azure Data Studio\bin;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;Microsoft VS Code\bin;C:\Users\Admin\AppData\Local\GitHubDesktop\bin;C:\Users\Admin\AppData\Roaming\npm;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Program Files\dotnet\;D:\nvm;D:\;C:\ProgramData\chocolatey\bin;D:\Git\cmd;D:\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;Microsoft VS Code\bin;C:\Users\Admin\AppData\Local\GitHubDesktop\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\src\flutter\bin;C:\Users\Admin\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts;C:\Users\Admin\AppData\Local\Programs\Python\bin;C:\Program Files\JetBrains\PyCharm 2024.2\bin;;C:\Users\Admin\AppData\Local\Microsoft\WinGet\Packages\Schniz.fnm_Microsoft.Winget.Source_8wekyb3d8bbwe;D:\nvm;D:\;C:\Users\Admin\AppData\Roaming\npm;D:\Microsoft VS Code\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn;
+USERNAME=Admin
+LANG=en_US.UTF-8
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.5072)
+OS uptime: 3 days 6:51 hours
+
+CPU: total 12 (initial active 12) (12 cores per cpu, 2 threads per core) family 23 model 113 stepping 0 microcode 0x0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt
+
+Memory: 4k page, system-wide physical 16310M (5310M free)
+TotalPageFile size 18358M (AvailPageFile size 70M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 64M, peak: 319M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (17.0.2+8-LTS-86) for windows-amd64 JRE (17.0.2+8-LTS-86), built on Dec  7 2021 21:51:03 by "mach5one" with MS VC++ 16.8 / 16.9 (VS2019)
+
+END.
